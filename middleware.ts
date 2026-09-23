@@ -11,13 +11,17 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/dashboard") ||
     pathname.startsWith("/products") ||
     pathname.startsWith("/inventory") ||
-    pathname.startsWith("/orders");
+    pathname.startsWith("/orders") ||
+    pathname.startsWith("/customers") ||
+    pathname.startsWith("/accounting");
 
   const isProtectedApi =
     pathname.startsWith("/api/dashboard") ||
     pathname.startsWith("/api/products") ||
     pathname.startsWith("/api/inventory") ||
-    pathname.startsWith("/api/orders");
+    pathname.startsWith("/api/orders") ||
+    pathname.startsWith("/api/customers") ||
+    pathname.startsWith("/api/accounting");
 
   if (isProtectedApi && !session) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

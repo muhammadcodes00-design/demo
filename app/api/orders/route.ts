@@ -8,6 +8,6 @@ export async function GET(req: NextRequest) {
   const search = searchParams.get("search") || undefined;
   const status = searchParams.get("status") || undefined;
 
-  const orders = getOrders(search, status);
+  const orders = await getOrders(search, status);
   return NextResponse.json(orders);
 }

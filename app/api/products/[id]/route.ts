@@ -5,7 +5,7 @@ export const runtime = "nodejs";
 
 export async function GET(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const product = getProduct(id);
+  const product = await getProduct(id);
   if (!product) {
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
   }
@@ -25,7 +25,7 @@ export async function PUT(req: NextRequest, { params }: { params: Promise<{ id: 
       return NextResponse.json({ error: "Price must be a valid non-negative number" }, { status: 400 });
     }
 
-    const updated = updateProduct(id, {
+    const updated = await updateProduct(id, {
       name: body.name.trim(),
       sku: body.sku.trim(),
       description: body.description?.trim(),

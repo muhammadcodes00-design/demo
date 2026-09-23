@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
   const search = searchParams.get("search") || undefined;
   const status = searchParams.get("status") || undefined;
 
-  const products = getProducts(search, status);
+  const products = await getProducts(search, status);
   return NextResponse.json(products);
 }
 
@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Price must be a valid non-negative number" }, { status: 400 });
     }
 
-    const product = createProduct({
+    const product = await createProduct({
       name: body.name.trim(),
       sku: body.sku.trim(),
       description: body.description?.trim(),

@@ -14,7 +14,7 @@ import {
 export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
-  const stats = getDashboardStats();
+  const stats = await getDashboardStats();
 
   const statusColors: Record<string, string> = {
     pending: "bg-amber-100 text-amber-800 border-amber-200",
@@ -80,18 +80,21 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <Link
+          href="/inventory"
+          className="bg-white p-5 rounded-xl border border-slate-200 hover:border-amber-300 hover:shadow-md transition-all flex items-center justify-between group"
+        >
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">Low Stock SKUs</p>
             <p className={`text-2xl font-bold mt-1 ${stats.lowStockCount > 0 ? "text-amber-600" : "text-slate-900"}`}>
               {stats.lowStockCount}
             </p>
-            <p className="text-xs text-amber-600/90 font-medium mt-1">Requires reorder attention</p>
+            <p className="text-xs text-amber-600/90 font-medium mt-1 group-hover:underline">Requires reorder attention →</p>
           </div>
-          <div className="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-xl bg-amber-50 group-hover:bg-amber-100 text-amber-600 flex items-center justify-center transition-colors">
             <AlertTriangle className="w-6 h-6" />
           </div>
-        </div>
+        </Link>
 
         <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
           <div>

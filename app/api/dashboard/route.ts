@@ -5,7 +5,7 @@ export const runtime = "nodejs";
 
 export async function GET() {
   try {
-    const stats = getDashboardStats();
+    const stats = await getDashboardStats();
     return NextResponse.json(stats);
   } catch (error: any) {
     return NextResponse.json({ error: error.message || "Failed to load dashboard" }, { status: 500 });
