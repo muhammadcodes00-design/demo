@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "InvortechDS — Admin Panel",
-  description: "InvortechDS Dental Supplies Admin Portal",
+  description: "InvortechDS Admin Portal",
 };
 
 export default function RootLayout({

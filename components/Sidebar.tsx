@@ -49,7 +49,7 @@ export default function Sidebar() {
         </div>
         <div>
           <h1 className="font-bold text-lg text-white leading-tight tracking-tight">InvortechDS</h1>
-          <p className="text-xs text-slate-400 font-medium">Dental Supplies Admin</p>
+          <p className="text-xs text-slate-400 font-medium">Admin</p>
         </div>
       </div>
 
